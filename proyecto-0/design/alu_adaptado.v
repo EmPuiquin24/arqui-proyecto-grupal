@@ -49,7 +49,7 @@ module alu_adaptado(
                 2'b0?: Result = sum;
                 2'b10: Result = a & b;
                 2'b11: Result = a | b;
-                default: Result = 32'bx;
+                default: Result = 5'bx;
             endcase 
     end
 endmodule
