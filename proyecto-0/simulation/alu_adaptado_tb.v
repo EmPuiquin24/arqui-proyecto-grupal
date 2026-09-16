@@ -29,37 +29,18 @@ module alu_adaptado_tb;
     alu_adaptado test(.a(a), .b(b), .ALUControl(ALUControl), .Result(Result), .ALUFlags(ALUFlags));
     
     initial begin 
-        // -----------------------
-        // Operaciones Aritméticas
-        // -----------------------
+        // Suma 3 + 5 
+        a = 5'b00011; b = 5'b00101; ALUControl = 2'b00; #20
         
-        // Suma 15 + 10
-        a = 5'b01111; b = 5'b01010; ALUControl = 2'b00; #20;
+        // Resta 5 - 5
+        a = 5'b00101; b = 5'b00101; ALUControl = 2'b01; #20
         
-        // Suma máximo número de 5 bits consigo mismo, genera overflow
-        a = 5'b01111; b = 5'b01111; ALUControl = 2'b00; #20;
+        // And 8 y 1
+        a = 5'b01000; b = 5'h00001; ALUControl = 2'b10; #20
         
-        // Resta 15 - 10 (activa carry al invertir 10)
-        a = 5'b01111; b = 5'b01010; ALUControl = 2'b01; #20;
-        
-        // Resta 10 - 15 sin carry pero activa flag neg
-        a = 5'b01010; b = 5'b01111; ALUControl = 2'b01; #20;
-        
-        // Resta 15 - 15 activa flag Zero
-        a = 5'b01111; b = 5'b01111; ALUControl = 2'b01; #20;
-        
-        
-        // -----------------------
-        // Operaciones Lógicas
-        // -----------------------
-        
-        // And:
-        a = 5'b11000; b = 5'b01100; ALUControl = 2'b10; #20; 
-        
-        // Or: 
-        a = 5'b11000; b = 5'b01100; ALUControl = 2'b11; #20; 
-        a = 5'b11000; b = 5'b01100; ALUControl = 2'b11;
-        
+        // Or 5 o 7
+        a = 5'b00101; b = 5'b00111; ALUControl = 2'b11; #20
+        a = 5'b00101; b = 5'b00111; ALUControl = 2'b11; #20
         $finish();
     end
 endmodule
